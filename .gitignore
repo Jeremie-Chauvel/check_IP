@@ -1,6 +1,10 @@
 ### folder specific ###
-launch_script # user specific settings in there
-old_IP.txt # save file used
+# user specific settings in there
+launch_script 
+# save file used
+old_IP.txt 
+# do not store logging
+*.log
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
