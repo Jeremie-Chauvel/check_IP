@@ -8,10 +8,11 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import setup_logging
 
-FROM_MACHINE="RZ"
+SAVE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "old_IP.txt")
+FROM_MACHINE = "RZ"
 
 def update_ip(IP):
-    with open("old_IP.txt","w") as new_ip:
+    with open(SAVE_FILE,"w") as new_ip:
         new_ip.write(IP)
 
     server_name = "smtp.gmail.com:587"
@@ -47,7 +48,7 @@ def check_ip():
     match_obj = re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", IP)
     if match_obj:
         try:
-            with open("old_IP.txt") as old_ip:
+            with open(SAVE_FILE) as old_ip:
                 val = old_ip.read()
         except FileNotFoundError as e:
             print(e)
